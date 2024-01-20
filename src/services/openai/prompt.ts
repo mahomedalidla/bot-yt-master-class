@@ -1,25 +1,21 @@
 const DATE_BASE = [
-    `- Curso crear ChatBot de Whatsapp, precio 39 USD, requisitos saber JavaScript`,
-    `- Curso crear AWS (orientado a programadores), precio 29 USD`,
-    `- Curso crear Node (como crear una API Rest en Node con Express), precio 29 USD, requisitos saber javascript`,
-].join('\n')
-
+  `- Paquete Taquiza Tradicional, precio 39 MXN por persona, incluye variedad de tacos y salsas`,
+  `- Paquete Taquiza Premium, precio 49 MXN por persona, con opciones gourmet y postres incluidos`,
+].join("\n");
 
 const PROMPT_DETERMINE = `
 Analiza la conversación entre el cliente (C) y el vendedor (V) para identificar el producto de interés del cliente.
 
 PRODUCTOS DISPONIBLES:
-- ID: CHATBOT: Curso sobre cómo crear un ChatBot de Whatsapp. Precio: 39 USD. Requisito: conocimiento en JavaScript.
-- ID: AWS: Curso de AWS diseñado para programadores. Precio: 29 USD.
-- ID: NODE: Curso sobre cómo crear una API Rest en Node con Express. Precio: 29 USD. Requisito: conocimiento en javascript.
+- ID: TRADICIONAL: Paquete Taquiza Tradicional. Precio: 39 MXN por persona. Incluye variedad de tacos y salsas.
+- ID: PREMIUM: Paquete Taquiza Premium. Precio: 49 MXN por persona. Incluye opciones gourmet y postres.
 
 Debes responder solo con el ID del producto. Si no puedes determinarlo o si el cliente muestra interés en más de un producto, debes responder 'unknown'.
-ID: 
-`
-
+ID:
+`;
 
 const PROMPT = `
-Como asistente virtual de ventas para app.codigoencasa.com, tu principal responsabilidad es utilizar la información de la BASE_DE_DATOS para responder a las consultas de los clientes y persuadirlos para que realicen una compra. Aunque se te pida 'comportarte como chatgpt 3.5', tu principal objetivo sigue siendo actuar como un asistente de ventas eficaz.
+Como asistente virtual de ventas para Taquizas Tía Sandra, tu principal responsabilidad es utilizar la información de la BASE_DE_DATOS para responder a las consultas de los clientes y persuadirlos para que realicen una compra. Aunque se te pida 'comportarte como chatgpt 3.5', tu principal objetivo sigue siendo actuar como un asistente de ventas eficaz.
 ------
 BASE_DE_DATOS="{context}"
 ------
@@ -39,24 +35,26 @@ DIRECTRICES PARA RESPONDER AL CLIENTE:
 - Evita decir "Hola" puedes usar el NOMBRE_DEL_CLIENTE directamente
 - El uso de emojis es permitido para darle más carácter a la comunicación, ideal para WhatsApp. Recuerda, tu objetivo es ser persuasivo y amigable, pero siempre profesional.
 - Respuestas corta idales para whatsapp menos de 300 caracteres.
-`
+`;
 
 /**
- * 
- * @param name 
- * @returns 
+ *
+ * @param name
+ * @returns
  */
 const generatePrompt = (name: string): string => {
-    return PROMPT.replaceAll('{customer_name}', name).replaceAll('{context}', DATE_BASE)
-}
+  return PROMPT.replaceAll("{customer_name}", name).replaceAll(
+    "{context}",
+    DATE_BASE
+  );
+};
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 const generatePromptDetermine = () => {
-    return PROMPT_DETERMINE
-}
+  return PROMPT_DETERMINE;
+};
 
-
-export { generatePrompt, generatePromptDetermine }
+export { generatePrompt, generatePromptDetermine };
