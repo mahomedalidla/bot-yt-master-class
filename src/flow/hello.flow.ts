@@ -58,5 +58,5 @@ import welcomeFlow from './welcome.flow';
 
 // // Crear flujo principal
  export default BotWhatsapp.addKeyword(['hola', 'buenas'])
-     .addAnswer('Flow hellow ------- Un gusto tenerte de nuevo ¿Como puedo ayudarte el día de hoy 😀?')
+     .addAnswer('Flow hellow perro ------- Un gusto tenerte de nuevo ¿Como puedo ayudarte el día de hoy 😀?')
 ///     .addAnswer('Puedes decir "opcion1" para hacer una pregunta o "opcion2" para obtener más información.');
